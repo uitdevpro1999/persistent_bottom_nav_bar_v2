@@ -1,6 +1,9 @@
 part of persistent_bottom_nav_bar_v2;
 
+
+
 class BottomNavStyle8 extends StatefulWidget {
+
   final NavBarEssentials? navBarEssentials;
 
   BottomNavStyle8({

@@ -23,6 +23,9 @@ class PersistentBottomNavBarItem {
   /// Color for the item's `inactiveIcon` and `title`. In most styles, declaring the the `inactiveColorPrimary` will be enough. But in some styles like `style7`, this might come help in differentiating the colors.
   final Color inactiveColorSecondary;
 
+  /// Color for the item's `inactiveIcon` and `title`. In most styles, declaring the the `inactiveColorPrimary` will be enough. But in some styles like `style7`, this might come help in differentiating the colors.
+  final Gradient? gradient;
+
   /// Padding of the navigation bar item. Applies on all sides. `5.0` by default.
   ///
   /// `USE WITH CAUTION, MAY BREAK THE NAV BAR`.
@@ -55,6 +58,8 @@ class PersistentBottomNavBarItem {
 
   final RouteAndNavigatorSettings routeAndNavigatorSettings;
 
+  final Color? iconFixColor;
+
   PersistentBottomNavBarItem(
       {required this.icon,
       this.inactiveIcon,
@@ -66,6 +71,8 @@ class PersistentBottomNavBarItem {
       this.inactiveColorSecondary = CupertinoColors.systemGrey,
       this.opacity = 1.0,
       this.filter,
+      this.iconFixColor,
+      this.gradient,
       this.textStyle,
       this.iconSize = 26.0,
       this.onSelectedTabPressWhenNoScreensPushed,

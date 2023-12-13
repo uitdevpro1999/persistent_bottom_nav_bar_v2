@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
-import 'package:persistent_bottom_nav_bar_v2_example_project/interactive_example.dart';
-import 'package:persistent_bottom_nav_bar_v2_example_project/modal-screen.dart';
-import 'package:persistent_bottom_nav_bar_v2_example_project/screens.dart';
+
+import 'interactive_example.dart';
+import 'modal-screen.dart';
+import 'screens.dart';
 
 void main() => runApp(PersistenBottomNavBarDemo());
 
@@ -24,7 +25,7 @@ class PersistenBottomNavBarDemo extends StatelessWidget {
 }
 
 class MainMenu extends StatefulWidget {
-  MainMenu({Key key}) : super(key: key);
+  MainMenu({Key? key}) : super(key: key);
 
   @override
   _MainMenuState createState() => _MainMenuState();
@@ -78,15 +79,15 @@ class _MainMenuState extends State<MainMenu> {
 // ----------------------- Using a provided Navbar style ---------------------//
 
 class ProvidedStyleExample extends StatefulWidget {
-  ProvidedStyleExample({Key key}) : super(key: key);
+  ProvidedStyleExample({Key? key}) : super(key: key);
 
   @override
   _ProvidedStyleExampleState createState() => _ProvidedStyleExampleState();
 }
 
 class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
-  PersistentTabController _controller;
-  bool _hideNavBar;
+  late PersistentTabController _controller;
+  late bool _hideNavBar;
 
   @override
   void initState() {
@@ -154,56 +155,31 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         title: "Search",
         activeColorPrimary: Colors.teal,
         inactiveColorPrimary: Colors.grey,
-        routeAndNavigatorSettings: RouteAndNavigatorSettings(
-          initialRoute: '/',
-          routes: {
-            '/first': (context) => MainScreen2(),
-            '/second': (context) => MainScreen3(),
-          },
-        ),
+
       ),
       PersistentBottomNavBarItem(
-          icon: Icon(Icons.add),
-          title: "Add",
-          activeColorPrimary: Colors.blueAccent,
-          activeColorSecondary: Colors.white,
-          inactiveColorPrimary: Colors.white,
-          routeAndNavigatorSettings: RouteAndNavigatorSettings(
-            initialRoute: '/',
-            routes: {
-              '/first': (context) => MainScreen2(),
-              '/second': (context) => MainScreen3(),
-            },
-          ),
-          onPressed: (context) {
-            pushDynamicScreen(context,
-                screen: SampleModalScreen(), withNavBar: true);
-          }),
+        icon: Icon(Icons.add),
+        title: "Add",
+        activeColorPrimary: Colors.teal,
+        iconFixColor:Colors.white,
+        inactiveColorPrimary: Colors.grey,
+        gradient: LinearGradient(
+        begin: Alignment(0.00, -1.00),
+    end: Alignment(0, 1),
+    colors: [Color(0xFF4355F5), Color(0xFFDA00FF)],
+    ),
+      ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.message),
         title: "Messages",
         activeColorPrimary: Colors.deepOrange,
         inactiveColorPrimary: Colors.grey,
-        routeAndNavigatorSettings: RouteAndNavigatorSettings(
-          initialRoute: '/',
-          routes: {
-            '/first': (context) => MainScreen2(),
-            '/second': (context) => MainScreen3(),
-          },
-        ),
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.settings),
         title: "Settings",
         activeColorPrimary: Colors.indigo,
         inactiveColorPrimary: Colors.grey,
-        routeAndNavigatorSettings: RouteAndNavigatorSettings(
-          initialRoute: '/',
-          routes: {
-            '/first': (context) => MainScreen2(),
-            '/second': (context) => MainScreen3(),
-          },
-        ),
       ),
     ];
   }
@@ -228,18 +204,18 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         screens: _buildScreens(),
         items: _navBarsItems(),
         confineInSafeArea: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: true,
         stateManagement: true,
-        navBarHeight: kBottomNavigationBarHeight,
+        navBarHeight: 62,
         hideNavigationBarWhenKeyboardShows: true,
         margin: EdgeInsets.all(0.0),
         popActionScreens: PopActionScreensType.all,
         bottomScreenMargin: 0.0,
         onWillPop: (context) async {
           await showDialog(
-            context: context,
+            context: context!,
             useSafeArea: true,
             builder: (context) => Container(
               height: 50.0,
@@ -257,8 +233,8 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         },
         hideNavigationBar: _hideNavBar,
         decoration: NavBarDecoration(
-            colorBehindNavBar: Colors.indigo,
-            borderRadius: BorderRadius.circular(20.0)),
+          colorBehindNavBar: Colors.indigo,
+        ),
         popAllScreensOnTapOfSelectedTab: true,
         itemAnimationProperties: ItemAnimationProperties(
           duration: Duration(milliseconds: 400),
@@ -267,10 +243,10 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         screenTransitionAnimation: ScreenTransitionAnimation(
           animateTabTransition: true,
           curve: Curves.ease,
-          duration: Duration(milliseconds: 200),
+          duration: Duration(milliseconds: 3),
         ),
         navBarStyle:
-            NavBarStyle.style17, // Choose the nav bar style with this property
+            NavBarStyle.style3, // Choose the nav bar style with this property
       ),
     );
   }
@@ -279,15 +255,15 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
 // ------------------------ Using a custom Navbar style ----------------------//
 
 class CustomWidgetExample extends StatefulWidget {
-  CustomWidgetExample({Key key}) : super(key: key);
+  CustomWidgetExample({Key? key}) : super(key: key);
 
   @override
   _CustomWidgetExampleState createState() => _CustomWidgetExampleState();
 }
 
 class _CustomWidgetExampleState extends State<CustomWidgetExample> {
-  PersistentTabController _controller;
-  bool _hideNavBar;
+  late PersistentTabController _controller;
+  late bool _hideNavBar;
 
   @override
   void initState() {
@@ -409,7 +385,7 @@ class _CustomWidgetExampleState extends State<CustomWidgetExample> {
           items: _navBarsItems(),
           onItemSelected: (index) {
             setState(() {
-              navBarEssentials.onItemSelected(index);
+              navBarEssentials.onItemSelected!(index);
             });
           },
           selectedIndex: _controller.index,
@@ -425,10 +401,10 @@ class CustomNavBarWidget extends StatelessWidget {
   final ValueChanged<int> onItemSelected;
 
   CustomNavBarWidget({
-    Key key,
-    this.selectedIndex,
-    @required this.items,
-    this.onItemSelected,
+    Key? key,
+    required this.selectedIndex,
+    required this.items,
+    required this.onItemSelected,
   });
 
   Widget _buildItem(PersistentBottomNavBarItem item, bool isSelected) {
@@ -460,7 +436,7 @@ class CustomNavBarWidget extends StatelessWidget {
               type: MaterialType.transparency,
               child: FittedBox(
                 child: Text(
-                  item.title,
+                  item.title ?? '',
                   style: TextStyle(
                       color: isSelected
                           ? (item.activeColorSecondary == null
