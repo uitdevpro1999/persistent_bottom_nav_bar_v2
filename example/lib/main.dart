@@ -216,7 +216,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         controller: _controller,
         screens: _buildScreens(),
         items: _navBarsItems(),
-        confineInSafeArea: false,
+        confineInSafeArea: true,
         backgroundColor: Colors.transparent,
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: true,
@@ -225,7 +225,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         hideNavigationBarWhenKeyboardShows: true,
         margin: EdgeInsets.all(0.0),
         popActionScreens: PopActionScreensType.all,
-        bottomScreenMargin: 0.0,
+        bottomScreenMargin: 24.0,
 
         onWillPop: (context) async {
           await showDialog(

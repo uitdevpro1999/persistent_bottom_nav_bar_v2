@@ -155,180 +155,188 @@ class BottomNavStyle3 extends StatelessWidget {
                 (this.navBarEssentials!.padding?.right ??
                     MediaQuery.of(context).size.width * 0.05))) /
         this.navBarEssentials!.items!.length);
-    return SizedBox(
-      height: 93,
-      child: Stack(
-        children: [
-          Positioned(
-              bottom: -4,
-              left: 0,
-              right: 0,
-              child: Container(
-                decoration: BoxDecoration(
-
-                ),
-                child:CustomPaint(
-                  size: Size(MediaQuery.of(context).size.width, 93),
-                  painter: RPSCustomPainterBlur(),
-                ),
-              )
-          ),
-          Positioned(
-            bottom: -4,
-            left: 0,
-            right: 0,
-            child: Container(
-              decoration: BoxDecoration(
-
-              ),
-              child:CustomPaint(
-                size: Size(MediaQuery.of(context).size.width, 93),
-                painter: RPSCustomPainter(),
-              ),
-            )
-          ),
-
-
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              width: double.infinity,
-              height: this.navBarEssentials!.navBarHeight,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                  boxShadow: [
-
-                  ],
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(16),
-                    topRight: Radius.circular(16)),
-              ),
-              padding: EdgeInsets.only(
-                  top: this.navBarEssentials!.padding?.top ?? 0.0,
-                  left: this.navBarEssentials!.padding?.left ??
-                      MediaQuery.of(context).size.width * 0.05,
-                  right: this.navBarEssentials!.padding?.right ??
-                      MediaQuery.of(context).size.width * 0.05,
-                  bottom: this.navBarEssentials!.padding?.bottom ??
-                      this.navBarEssentials!.navBarHeight! * 0.1),
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      AnimatedContainer(
-                        duration: this
-                                .navBarEssentials!
-                                .itemAnimationProperties
-                                ?.duration ??
-                            Duration(milliseconds: 300),
-                        curve: this
-                                .navBarEssentials!
-                                .itemAnimationProperties
-                                ?.curve ??
-                            Curves.ease,
-                        color: Colors.transparent,
-                        width: itemWidth *
-                                        this.navBarEssentials!.selectedIndex! +(itemWidth *1/6),
-                        height: 4.0,
-                      ),
-                      Flexible(
-                        child: AnimatedContainer(
-                          duration: this
-                                  .navBarEssentials!
-                                  .itemAnimationProperties
-                                  ?.duration ??
-                              Duration(milliseconds: 300),
-                          curve: this
-                                  .navBarEssentials!
-                                  .itemAnimationProperties
-                                  ?.curve ??
-                              Curves.ease,
-                          width: itemWidth *2/3,
-                          height: 4.0,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            color:
-                                this.navBarEssentials!.selectedIndex == midIndex
-                                    ? Colors.transparent
-                                    : selectedItemActiveColor,
-                            borderRadius: BorderRadius.circular(100.0),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 5.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: this.navBarEssentials!.items!.map((item) {
-                          int index =
-                              this.navBarEssentials!.items!.indexOf(item);
-                          return Flexible(
-                            child: GestureDetector(
-                              onTap: () {
-                                if (this
-                                        .navBarEssentials!
-                                        .items![index]
-                                        .onPressed !=
-                                    null) {
-                                  this
-                                          .navBarEssentials!
-                                          .items![index]
-                                          .onPressed!(
-                                      this
-                                          .navBarEssentials!
-                                          .selectedScreenBuildContext);
-                                } else {
-                                  this.navBarEssentials!.onItemSelected!(index);
-                                }
-                              },
-                              child: Container(
-                                color: Colors.transparent,
-                                child: _buildItem(
-                                    item,
-                                    this.navBarEssentials!.selectedIndex ==
-                                        index,
-                                    this.navBarEssentials!.navBarHeight),
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          this.navBarEssentials!.navBarHeight == 0
-              ? SizedBox.shrink()
-              : Positioned(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          height: (this.navBarEssentials!.navBarHeight! + 30.0),
+          child: Stack(
+            children: [
+              Positioned(
+                  top: 0,
                   left: 0,
                   right: 0,
-                  bottom: 0,
-                  child: GestureDetector(
-                    onTap: () {
-                      if (this.navBarEssentials!.items![midIndex].onPressed !=
-                          null) {
-                        this.navBarEssentials!.items![midIndex].onPressed!(
-                            this.navBarEssentials!.selectedScreenBuildContext);
-                      } else {
-                        this.navBarEssentials!.onItemSelected!(midIndex);
-                      }
-                    },
-                    child: _buildMiddleItem(
-                        this.navBarEssentials!.items![midIndex],
-                        this.navBarEssentials!.selectedIndex == midIndex,
-                        this.navBarEssentials!.navBarHeight),
+                  child: Container(
+                    decoration: BoxDecoration(),
+                    child: CustomPaint(
+                      size: Size(MediaQuery.of(context).size.width,
+                          this.navBarEssentials!.navBarHeight! + 30.0),
+                      painter: RPSCustomPainterBlur(),
+                    ),
+                  )),
+              Positioned(
+                  top: 3,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    decoration: BoxDecoration(),
+                    child: CustomPaint(
+                      size: Size(MediaQuery.of(context).size.width,
+                          this.navBarEssentials!.navBarHeight! + 30.0),
+                      painter: RPSCustomPainter(),
+                    ),
+                  )),
+              Positioned(
+                top: 27,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                child: Container(
+                  width: double.infinity,
+                  height: this.navBarEssentials!.navBarHeight,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    boxShadow: [],
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(16),
+                        topRight: Radius.circular(16)),
+                  ),
+                  padding: EdgeInsets.only(
+                      top: this.navBarEssentials!.padding?.top ?? 0.0,
+                      left: this.navBarEssentials!.padding?.left ??
+                          MediaQuery.of(context).size.width * 0.05,
+                      right: this.navBarEssentials!.padding?.right ??
+                          MediaQuery.of(context).size.width * 0.05,
+                      bottom: this.navBarEssentials!.padding?.bottom ??
+                          this.navBarEssentials!.navBarHeight! * 0.1),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          AnimatedContainer(
+                            duration: this
+                                    .navBarEssentials!
+                                    .itemAnimationProperties
+                                    ?.duration ??
+                                Duration(milliseconds: 300),
+                            curve: this
+                                    .navBarEssentials!
+                                    .itemAnimationProperties
+                                    ?.curve ??
+                                Curves.ease,
+                            color: Colors.transparent,
+                            width: itemWidth *
+                                    this.navBarEssentials!.selectedIndex! +
+                                (itemWidth * 1 / 6),
+                            height: 4.0,
+                          ),
+                          Flexible(
+                            child: AnimatedContainer(
+                              duration: this
+                                      .navBarEssentials!
+                                      .itemAnimationProperties
+                                      ?.duration ??
+                                  Duration(milliseconds: 300),
+                              curve: this
+                                      .navBarEssentials!
+                                      .itemAnimationProperties
+                                      ?.curve ??
+                                  Curves.ease,
+                              width: itemWidth * 2 / 3,
+                              height: 4.0,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: this.navBarEssentials!.selectedIndex ==
+                                        midIndex
+                                    ? Colors.transparent
+                                    : selectedItemActiveColor,
+                                borderRadius: BorderRadius.circular(100.0),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: this.navBarEssentials!.items!.map((item) {
+                              int index =
+                                  this.navBarEssentials!.items!.indexOf(item);
+                              return Flexible(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    if (this
+                                            .navBarEssentials!
+                                            .items![index]
+                                            .onPressed !=
+                                        null) {
+                                      this
+                                              .navBarEssentials!
+                                              .items![index]
+                                              .onPressed!(
+                                          this
+                                              .navBarEssentials!
+                                              .selectedScreenBuildContext);
+                                    } else {
+                                      this
+                                          .navBarEssentials!
+                                          .onItemSelected!(index);
+                                    }
+                                  },
+                                  child: Container(
+                                    color: Colors.transparent,
+                                    child: _buildItem(
+                                        item,
+                                        this.navBarEssentials!.selectedIndex ==
+                                            index,
+                                        this.navBarEssentials!.navBarHeight),
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-        ],
-      ),
+              ),
+              this.navBarEssentials!.navBarHeight == 0
+                  ? SizedBox.shrink()
+                  : Positioned(
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      child: GestureDetector(
+                        onTap: () {
+                          if (this
+                                  .navBarEssentials!
+                                  .items![midIndex]
+                                  .onPressed !=
+                              null) {
+                            this.navBarEssentials!.items![midIndex].onPressed!(
+                                this
+                                    .navBarEssentials!
+                                    .selectedScreenBuildContext);
+                          } else {
+                            this.navBarEssentials!.onItemSelected!(midIndex);
+                          }
+                        },
+                        child: _buildMiddleItem(
+                            this.navBarEssentials!.items![midIndex],
+                            this.navBarEssentials!.selectedIndex == midIndex,
+                            this.navBarEssentials!.navBarHeight),
+                      ),
+                    ),
+            ],
+          ),
+        ),
+        Container(height: 8,width: double.infinity,color: Colors.white,),
+      ],
     );
   }
 }
@@ -401,8 +409,8 @@ class RPSCustomPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
-
 }
+
 class RPSCustomPainterBlur extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -463,17 +471,19 @@ class RPSCustomPainterBlur extends CustomPainter {
 
     Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
     paint_0_fill.color = Colors.black.withOpacity(0.5);
-    canvas.drawPath(path_0, paint_0_fill..maskFilter = MaskFilter.blur(BlurStyle.normal, convertRadiusToSigma(3)));
+    canvas.drawPath(
+        path_0,
+        paint_0_fill
+          ..maskFilter =
+              MaskFilter.blur(BlurStyle.normal, convertRadiusToSigma(3)));
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
-
 }
 
-
 double convertRadiusToSigma(double radius) {
-return radius * 0.57735 + 0.5;
+  return radius * 0.57735 + 0.5;
 }
