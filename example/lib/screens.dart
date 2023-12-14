@@ -20,7 +20,7 @@ class MainScreen extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Scaffold(
-          backgroundColor: Colors.indigo,
+          backgroundColor: Colors.white,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,6 +41,150 @@ class MainScreen extends StatelessWidget {
                       screen: MainScreen2(),
                       pageTransitionAnimation:
                           PageTransitionAnimation.scaleRotate,
+                    );
+                  },
+                  child: Text(
+                    "Go to Second Screen ->",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/home'),
+                      screen: MainScreen2(),
+                      pageTransitionAnimation:
+                      PageTransitionAnimation.scaleRotate,
+                    );
+                  },
+                  child: Text(
+                    "Go to Second Screen ->",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/home'),
+                      screen: MainScreen2(),
+                      pageTransitionAnimation:
+                      PageTransitionAnimation.scaleRotate,
+                    );
+                  },
+                  child: Text(
+                    "Go to Second Screen ->",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/home'),
+                      screen: MainScreen2(),
+                      pageTransitionAnimation:
+                      PageTransitionAnimation.scaleRotate,
+                    );
+                  },
+                  child: Text(
+                    "Go to Second Screen ->",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/home'),
+                      screen: MainScreen2(),
+                      pageTransitionAnimation:
+                      PageTransitionAnimation.scaleRotate,
+                    );
+                  },
+                  child: Text(
+                    "Go to Second Screen ->",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/home'),
+                      screen: MainScreen2(),
+                      pageTransitionAnimation:
+                      PageTransitionAnimation.scaleRotate,
+                    );
+                  },
+                  child: Text(
+                    "Go to Second Screen ->",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/home'),
+                      screen: MainScreen2(),
+                      pageTransitionAnimation:
+                      PageTransitionAnimation.scaleRotate,
+                    );
+                  },
+                  child: Text(
+                    "Go to Second Screen ->",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/home'),
+                      screen: MainScreen2(),
+                      pageTransitionAnimation:
+                      PageTransitionAnimation.scaleRotate,
+                    );
+                  },
+                  child: Text(
+                    "Go to Second Screen ->",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/home'),
+                      screen: MainScreen2(),
+                      pageTransitionAnimation:
+                      PageTransitionAnimation.scaleRotate,
+                    );
+                  },
+                  child: Text(
+                    "Go to Second Screen ->",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    pushNewScreenWithRouteSettings(
+                      context,
+                      settings: RouteSettings(name: '/home'),
+                      screen: MainScreen2(),
+                      pageTransitionAnimation:
+                      PageTransitionAnimation.scaleRotate,
                     );
                   },
                   child: Text(

@@ -35,41 +35,53 @@ class _MainMenuState extends State<MainMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red,
       appBar: AppBar(
         title: Text("Navigation Bar Demo"),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Center(
-            child: ElevatedButton(
-              child: Text("Custom widget example"),
-              onPressed: () => pushNewScreen(
-                context,
-                screen: CustomWidgetExample(),
+      body: Stack(
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Center(
+                child: ElevatedButton(
+                  child: Text("Custom widget example"),
+                  onPressed: () => pushNewScreen(
+                    context,
+                    screen: CustomWidgetExample(),
+                  ),
+                ),
               ),
-            ),
-          ),
-          SizedBox(height: 20.0),
-          Center(
-            child: ElevatedButton(
-              child: Text("Built-in style example"),
-              onPressed: () => pushNewScreen(
-                context,
-                screen: ProvidedStyleExample(),
+              SizedBox(height: 20.0),
+              Center(
+                child: ElevatedButton(
+                  child: Text("Built-in style example"),
+                  onPressed: () => pushNewScreen(
+                    context,
+                    screen: ProvidedStyleExample(),
+                  ),
+                ),
               ),
-            ),
-          ),
-          SizedBox(height: 20.0),
-          Center(
-            child: ElevatedButton(
-              child: Text("Interactive Example"),
-              onPressed: () => pushNewScreen(
-                context,
-                screen: InteractiveExample(),
+              SizedBox(height: 20.0),
+              Center(
+                child: ElevatedButton(
+                  child: Text("Interactive Example"),
+                  onPressed: () => pushNewScreen(
+                    context,
+                    screen: InteractiveExample(),
+                  ),
+                ),
               ),
-            ),
+            ],
           ),
+         Positioned(
+           top:250,
+           child:  CustomPaint(
+             size: Size(MediaQuery.of(context).size.width, 93),
+             painter: RPSCustomPainter(),
+           ),
+         )
         ],
       ),
     );
@@ -188,6 +200,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Navigation Bar Demo')),
+
       drawer: Drawer(
         child: Center(
           child: Column(
@@ -203,7 +216,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         controller: _controller,
         screens: _buildScreens(),
         items: _navBarsItems(),
-        confineInSafeArea: true,
+        confineInSafeArea: false,
         backgroundColor: Colors.transparent,
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: true,
@@ -213,6 +226,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         margin: EdgeInsets.all(0.0),
         popActionScreens: PopActionScreensType.all,
         bottomScreenMargin: 0.0,
+
         onWillPop: (context) async {
           await showDialog(
             context: context!,
@@ -231,6 +245,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
           );
           return false;
         },
+
         hideNavigationBar: _hideNavBar,
         decoration: NavBarDecoration(
           colorBehindNavBar: Colors.indigo,
@@ -330,12 +345,15 @@ class _CustomWidgetExampleState extends State<CustomWidgetExample> {
         title: ("Search"),
         activeColorPrimary: Colors.teal,
         inactiveColorPrimary: Colors.grey,
+        opacity: 0,
+
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.add),
         title: ("Add"),
         activeColorPrimary: Colors.deepOrange,
         inactiveColorPrimary: Colors.grey,
+        opacity: 0,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.settings),

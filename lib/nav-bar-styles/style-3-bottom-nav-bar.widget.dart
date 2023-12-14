@@ -160,14 +160,35 @@ class BottomNavStyle3 extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
+              bottom: -4,
+              left: 0,
+              right: 0,
+              child: Container(
+                decoration: BoxDecoration(
+
+                ),
+                child:CustomPaint(
+                  size: Size(MediaQuery.of(context).size.width, 93),
+                  painter: RPSCustomPainterBlur(),
+                ),
+              )
+          ),
+          Positioned(
             bottom: -4,
             left: 0,
             right: 0,
-            child: CustomPaint(
-              size: Size(MediaQuery.of(context).size.width, 93),
-              painter: RPSCustomPainter(),
-            ),
+            child: Container(
+              decoration: BoxDecoration(
+
+              ),
+              child:CustomPaint(
+                size: Size(MediaQuery.of(context).size.width, 93),
+                painter: RPSCustomPainter(),
+              ),
+            )
           ),
+
+
           Positioned(
             bottom: 0,
             left: 0,
@@ -177,6 +198,9 @@ class BottomNavStyle3 extends StatelessWidget {
               height: this.navBarEssentials!.navBarHeight,
               decoration: BoxDecoration(
                 color: Colors.white,
+                  boxShadow: [
+
+                  ],
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16)),
@@ -377,4 +401,79 @@ class RPSCustomPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
   }
+
+}
+class RPSCustomPainterBlur extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    Path path_0 = Path();
+    path_0.moveTo(size.width * 0.3898533, size.height * 0.2815534);
+    path_0.cubicTo(
+        size.width * 0.4095947,
+        size.height * 0.2815534,
+        size.width * 0.4258907,
+        size.height * 0.2287039,
+        size.width * 0.4379493,
+        size.height * 0.1717864);
+    path_0.cubicTo(
+        size.width * 0.4525760,
+        size.height * 0.1027340,
+        size.width * 0.4755280,
+        size.height * 0.05825243,
+        size.width * 0.5013333,
+        size.height * 0.05825243);
+    path_0.cubicTo(
+        size.width * 0.5271387,
+        size.height * 0.05825243,
+        size.width * 0.5500907,
+        size.height * 0.1027340,
+        size.width * 0.5647173,
+        size.height * 0.1717864);
+    path_0.cubicTo(
+        size.width * 0.5767760,
+        size.height * 0.2287039,
+        size.width * 0.5930720,
+        size.height * 0.2815534,
+        size.width * 0.6128133,
+        size.height * 0.2815534);
+    path_0.lineTo(size.width * 0.9573333, size.height * 0.2815534);
+    path_0.cubicTo(size.width * 0.9808987, size.height * 0.2815534, size.width,
+        size.height * 0.3511010, size.width, size.height * 0.4368932);
+    path_0.lineTo(size.width, size.height * 0.8058252);
+    path_0.cubicTo(
+        size.width,
+        size.height * 0.8916175,
+        size.width * 0.9808987,
+        size.height * 0.9611650,
+        size.width * 0.9573333,
+        size.height * 0.9611650);
+    path_0.lineTo(size.width * 0.04266667, size.height * 0.9611650);
+    path_0.cubicTo(size.width * 0.01910253, size.height * 0.9611650, 0,
+        size.height * 0.8916175, 0, size.height * 0.8058252);
+    path_0.lineTo(0, size.height * 0.4368932);
+    path_0.cubicTo(
+        0,
+        size.height * 0.3511010,
+        size.width * 0.01910251,
+        size.height * 0.2815534,
+        size.width * 0.04266667,
+        size.height * 0.2815534);
+    path_0.lineTo(size.width * 0.3898533, size.height * 0.2815534);
+    path_0.close();
+
+    Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
+    paint_0_fill.color = Colors.black.withOpacity(0.5);
+    canvas.drawPath(path_0, paint_0_fill..maskFilter = MaskFilter.blur(BlurStyle.normal, convertRadiusToSigma(3)));
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+
+}
+
+
+double convertRadiusToSigma(double radius) {
+return radius * 0.57735 + 0.5;
 }

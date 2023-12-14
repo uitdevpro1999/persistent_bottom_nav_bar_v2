@@ -12,7 +12,7 @@ class InteractiveExample extends StatefulWidget {
 class _InteractiveExampleState extends State<InteractiveExample> {
   late PersistentTabController _controller;
   bool _hideNavBar = false;
-  NavBarStyle _navBarStyle = NavBarStyle.style15;
+  NavBarStyle _navBarStyle = NavBarStyle.style3;
   bool _hideNavigationBarWhenKeyboardShows = true;
   bool _resizeToAvoidBottomInset = true;
   bool _stateManagement = true;
