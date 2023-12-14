@@ -115,13 +115,7 @@ class PersistentBottomNavBar extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: this.navBarDecoration!.borderRadius ??
                           BorderRadius.zero,
-                      child: BackdropFilter(
-                        filter: this
-                                .navBarEssentials!
-                                .items![this.navBarEssentials!.selectedIndex!]
-                                .filter ??
-                            ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
-                        child: Container(
+                      child:  Container(
                           decoration: getNavBarDecoration(
                             showOpacity: false,
                             decoration: navBarDecoration,
@@ -143,7 +137,7 @@ class PersistentBottomNavBar extends StatelessWidget {
                             child: getNavBarStyle()!,
                           ),
                         ),
-                      ),
+
                     ),
                   ),
       );
