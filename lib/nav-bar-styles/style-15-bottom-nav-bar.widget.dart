@@ -83,6 +83,7 @@ class BottomNavStyle15 extends StatelessWidget {
           );
   }
 
+
   Widget _buildMiddleItem(
       PersistentBottomNavBarItem item, bool isSelected, double? height) {
     return this.navBarEssentials!.navBarHeight == 0
@@ -99,18 +100,24 @@ class BottomNavStyle15 extends StatelessWidget {
                     child: Container(
                       width: 150.0,
                       height: height,
-                      margin: EdgeInsets.only(top: 2.0),
+                      margin: EdgeInsets.only(top: 0.0),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: item.activeColorPrimary,
+                        color:item.iconFixColor !=null ?item.iconFixColor: item.activeColorPrimary,
                         border:
-                            Border.all(color: Colors.transparent, width: 5.0),
+                            Border.all(color: Colors.transparent, width: 0.0),
                         boxShadow: this.navBarDecoration!.boxShadow,
                       ),
                       child: Container(
                         alignment: Alignment.center,
                         height: height,
-                        child: ListView(
+                        child:
+                          // SvgPicture.asset(isSelecteditem? item.icon:item.inactiveIcon ?? item.icon,
+                          // width:item.iconSize,
+                          // height:item.iconSize,
+                          // ),
+
+                        ListView(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           scrollDirection: Axis.horizontal,
@@ -123,7 +130,7 @@ class BottomNavStyle15 extends StatelessWidget {
                                   child: IconTheme(
                                     data: IconThemeData(
                                         size: item.iconSize,
-                                        color: item.activeColorSecondary == null
+                                        color:item.iconFixColor !=null ?item.iconFixColor: item.activeColorSecondary == null
                                             ? item.activeColorPrimary
                                             : item.activeColorSecondary),
                                     child: isSelected
@@ -139,6 +146,7 @@ class BottomNavStyle15 extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 item.title == null
                     ? SizedBox.shrink()
                     : Padding(

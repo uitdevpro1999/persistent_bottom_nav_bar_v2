@@ -4,7 +4,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
 import 'interactive_example.dart';
 import 'modal-screen.dart';
 import 'screens.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 void main() => runApp(PersistenBottomNavBarDemo());
 
 class PersistenBottomNavBarDemo extends StatelessWidget {
@@ -75,13 +75,13 @@ class _MainMenuState extends State<MainMenu> {
               ),
             ],
           ),
-         Positioned(
-           top:250,
-           child:  CustomPaint(
-             size: Size(MediaQuery.of(context).size.width, 93),
-             painter: RPSCustomPainter(),
-           ),
-         )
+          // Positioned(
+          //   top:250,
+          //   child:  CustomPaint(
+          //     size: Size(MediaQuery.of(context).size.width, 93),
+          //     painter: RPSCustomPainter(),
+          //   ),
+          // )
         ],
       ),
     );
@@ -167,19 +167,16 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         title: "Search",
         activeColorPrimary: Colors.teal,
         inactiveColorPrimary: Colors.grey,
-
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.add),
+        icon: SvgPicture.asset('assets/Asset 1.svg'),
         title: "Add",
-        activeColorPrimary: Colors.teal,
-        iconFixColor:Colors.white,
+        activeColorPrimary: Colors.grey,
+
+        iconFixColor: Colors.transparent,
         inactiveColorPrimary: Colors.grey,
-        gradient: LinearGradient(
-        begin: Alignment(0.00, -1.00),
-    end: Alignment(0, 1),
-    colors: [Color(0xFF4355F5), Color(0xFFDA00FF)],
-    ),
+
+
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.message),
@@ -200,7 +197,6 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Navigation Bar Demo')),
-
       drawer: Drawer(
         child: Center(
           child: Column(
@@ -261,7 +257,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
           duration: Duration(milliseconds: 3),
         ),
         navBarStyle:
-            NavBarStyle.style3, // Choose the nav bar style with this property
+            NavBarStyle.style15, // Choose the nav bar style with this property
       ),
     );
   }
@@ -346,7 +342,6 @@ class _CustomWidgetExampleState extends State<CustomWidgetExample> {
         activeColorPrimary: Colors.teal,
         inactiveColorPrimary: Colors.grey,
         opacity: 0,
-
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.add),
