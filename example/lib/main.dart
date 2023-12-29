@@ -5,6 +5,7 @@ import 'interactive_example.dart';
 import 'modal-screen.dart';
 import 'screens.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 void main() => runApp(PersistenBottomNavBarDemo());
 
 class PersistenBottomNavBarDemo extends StatelessWidget {
@@ -172,11 +173,8 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         icon: SvgPicture.asset('assets/Asset 1.svg'),
         title: "Add",
         activeColorPrimary: Colors.grey,
-
         iconFixColor: Colors.transparent,
         inactiveColorPrimary: Colors.grey,
-
-
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.message),
@@ -186,7 +184,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.settings),
-        title: "Settings",
+        title: "123",
         activeColorPrimary: Colors.indigo,
         inactiveColorPrimary: Colors.grey,
       ),
@@ -213,7 +211,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         screens: _buildScreens(),
         items: _navBarsItems(),
         confineInSafeArea: true,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: true,
         stateManagement: true,
@@ -386,6 +384,7 @@ class _CustomWidgetExampleState extends State<CustomWidgetExample> {
         items: _navBarsItems(),
         confineInSafeArea: true,
         itemCount: 5,
+        navBarHeight: 62,
         handleAndroidBackButtonPress: true,
         stateManagement: true,
         hideNavigationBar: _hideNavBar,
