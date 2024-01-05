@@ -17,17 +17,17 @@ class BottomNavStyle15 extends StatelessWidget {
         : Container(
             width: 150.0,
             height: height,
-      color:Colors.white,
-            padding: EdgeInsets.only(
+      color: Colors.white,
+
+      padding: EdgeInsets.only(
                 top: this.navBarEssentials!.padding?.top ??
                     this.navBarEssentials!.navBarHeight! * 0.15,
                 bottom: this.navBarEssentials!.padding?.bottom ??
                     this.navBarEssentials!.navBarHeight! * 0.12),
             child: Container(
               alignment: Alignment.center,
-              color:Colors.white,
               height: height,
-
+              color: Colors.white,
               child: ListView(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
@@ -104,8 +104,10 @@ class BottomNavStyle15 extends StatelessWidget {
                     width: 150.0,
                     height: height,
                     margin: EdgeInsets.only(top: 0.0),
+
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
+
                       color: item.iconFixColor != null
                           ? item.iconFixColor
                           : item.activeColorPrimary,
@@ -116,6 +118,7 @@ class BottomNavStyle15 extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                       height: height,
+
                       child:
                       // SvgPicture.asset(isSelecteditem? item.icon:item.inactiveIcon ?? item.icon,
                       // width:item.iconSize,
@@ -191,7 +194,8 @@ class BottomNavStyle15 extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Container(
               height: this.navBarEssentials!.navBarHeight,
-              color:Colors.white,
+              color: Colors.white,
+              
               child: ClipRRect(
                 borderRadius:
                     this.navBarDecoration!.borderRadius ?? BorderRadius.zero,
@@ -203,7 +207,7 @@ class BottomNavStyle15 extends StatelessWidget {
                       ImageFilter.blur(sigmaX: 0.5, sigmaY: 0.5),
                   child: Container(
                     height: this.navBarEssentials!.navBarHeight,
-                    color:Colors.white,
+
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,

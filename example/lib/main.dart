@@ -205,7 +205,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         controller: _controller,
         screens: _buildScreens(),
         items: _navBarsItems(),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: true,
         stateManagement: true,
@@ -226,29 +226,10 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
 
         },
 
-        onWillPop: (context) async {
-          await showDialog(
-            context: context!,
-            useSafeArea: true,
-            builder: (context) => Container(
-              height: 50.0,
-              width: 50.0,
-              color: Colors.white,
-              child: ElevatedButton(
-                child: Text("Close"),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
-          );
-          return false;
-        },
+
 
         hideNavigationBar: _hideNavBar,
-        decoration: NavBarDecoration(
-          colorBehindNavBar: Colors.indigo,
-        ),
+
         popAllScreensOnTapOfSelectedTab: true,
         itemAnimationProperties: ItemAnimationProperties(
           duration: Duration(milliseconds: 400),
