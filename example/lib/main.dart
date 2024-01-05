@@ -6,6 +6,8 @@ import 'modal-screen.dart';
 import 'screens.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'test_screen.dart';
+
 void main() => runApp(PersistenBottomNavBarDemo());
 
 class PersistenBottomNavBarDemo extends StatelessWidget {
@@ -127,14 +129,7 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
           });
         },
       ),
-      MainScreen(
-        hideStatus: _hideNavBar,
-        onScreenHideButtonPressed: () {
-          setState(() {
-            _hideNavBar = !_hideNavBar;
-          });
-        },
-      ),
+      SizedBox(),
       MainScreen(
         hideStatus: _hideNavBar,
         onScreenHideButtonPressed: () {
@@ -210,7 +205,6 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         controller: _controller,
         screens: _buildScreens(),
         items: _navBarsItems(),
-        confineInSafeArea: true,
         backgroundColor: Colors.white,
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: true,
@@ -219,7 +213,18 @@ class _ProvidedStyleExampleState extends State<ProvidedStyleExample> {
         hideNavigationBarWhenKeyboardShows: true,
         margin: EdgeInsets.all(0.0),
         popActionScreens: PopActionScreensType.all,
-        bottomScreenMargin: 24.0,
+        // bottomScreenMargin: 24.0,
+        onItemSelected: (value) {
+          if (value == 2) {
+           Navigator.push(context,MaterialPageRoute(builder: (context) =>const TestScreen(),) );
+           _controller.jumpToTab(1);
+
+          } else {
+            _controller.jumpToTab(value);
+
+          }
+
+        },
 
         onWillPop: (context) async {
           await showDialog(
@@ -299,14 +304,7 @@ class _CustomWidgetExampleState extends State<CustomWidgetExample> {
           });
         },
       ),
-      MainScreen(
-        hideStatus: _hideNavBar,
-        onScreenHideButtonPressed: () {
-          setState(() {
-            _hideNavBar = !_hideNavBar;
-          });
-        },
-      ),
+      SizedBox(),
       MainScreen(
         hideStatus: _hideNavBar,
         onScreenHideButtonPressed: () {

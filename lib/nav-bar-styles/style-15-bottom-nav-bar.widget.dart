@@ -11,7 +11,7 @@ class BottomNavStyle15 extends StatelessWidget {
   });
 
   Widget _buildItem(BuildContext context, PersistentBottomNavBarItem item,
-      bool isSelected, double? height) {
+      bool isSelected, double? height, bool isMid) {
     return this.navBarEssentials!.navBarHeight == 0
         ? SizedBox.shrink()
         : Container(
@@ -46,7 +46,7 @@ class BottomNavStyle15 extends StatelessWidget {
                                   : item.inactiveColorPrimary == null
                                       ? item.activeColorPrimary
                                       : item.inactiveColorPrimary),
-                          child: isSelected
+                          child:isMid?SizedBox(): isSelected
                               ? item.icon
                               : item.inactiveIcon ?? item.icon,
                         ),
@@ -93,90 +93,65 @@ class BottomNavStyle15 extends StatelessWidget {
                 bottom: this.navBarEssentials!.padding?.bottom ?? 0.0),
             child: Stack(
               children: <Widget>[
-                Transform.translate(
-                  offset: Offset(0, -23),
-                  child: Center(
+                Positioned(
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    child:Center(
+                  child: Container(
+                    width: 150.0,
+                    height: height,
+                    margin: EdgeInsets.only(top: 0.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: item.iconFixColor != null
+                          ? item.iconFixColor
+                          : item.activeColorPrimary,
+                      border:
+                      Border.all(color: Colors.transparent, width: 0.0),
+                      boxShadow: this.navBarDecoration!.boxShadow,
+                    ),
                     child: Container(
-                      width: 150.0,
+                      alignment: Alignment.center,
                       height: height,
-                      margin: EdgeInsets.only(top: 0.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: item.iconFixColor != null
-                            ? item.iconFixColor
-                            : item.activeColorPrimary,
-                        border:
-                            Border.all(color: Colors.transparent, width: 0.0),
-                        boxShadow: this.navBarDecoration!.boxShadow,
-                      ),
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: height,
-                        child:
-                            // SvgPicture.asset(isSelecteditem? item.icon:item.inactiveIcon ?? item.icon,
-                            // width:item.iconSize,
-                            // height:item.iconSize,
-                            // ),
+                      child:
+                      // SvgPicture.asset(isSelecteditem? item.icon:item.inactiveIcon ?? item.icon,
+                      // width:item.iconSize,
+                      // height:item.iconSize,
+                      // ),
 
-                            ListView(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Expanded(
-                                  child: IconTheme(
-                                    data: IconThemeData(
-                                        size: item.iconSize,
-                                        color: item.iconFixColor != null
-                                            ? item.iconFixColor
-                                            : item.activeColorSecondary == null
-                                                ? item.activeColorPrimary
-                                                : item.activeColorSecondary),
-                                    child: isSelected
-                                        ? item.icon
-                                        : item.inactiveIcon ?? item.icon,
-                                  ),
+                      ListView(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Expanded(
+                                child: IconTheme(
+                                  data: IconThemeData(
+                                      size: item.iconSize,
+                                      color: item.iconFixColor != null
+                                          ? item.iconFixColor
+                                          : item.activeColorSecondary == null
+                                          ? item.activeColorPrimary
+                                          : item.activeColorSecondary),
+                                  child: isSelected
+                                      ? item.icon
+                                      : item.inactiveIcon ?? item.icon,
                                 ),
-                              ],
-                            )
-                          ],
-                        ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ),
                   ),
-                ),
-                item.title == null
-                    ? SizedBox.shrink()
-                    : Padding(
-                        padding: const EdgeInsets.only(bottom: 5.0),
-                        child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Material(
-                            type: MaterialType.transparency,
-                            child: FittedBox(
-                                child: Text(
-                              item.title!,
-                              style: item.textStyle != null
-                                  ? (item.textStyle!.apply(
-                                      color: isSelected
-                                          ? (item.activeColorSecondary == null
-                                              ? item.activeColorPrimary
-                                              : item.activeColorSecondary)
-                                          : item.inactiveColorPrimary))
-                                  : TextStyle(
-                                      color: isSelected
-                                          ? (item.activeColorPrimary)
-                                          : item.inactiveColorPrimary,
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12.0),
-                            )),
-                          ),
-                        ),
-                      )
+                ) )
+
+
               ],
             ),
           );
@@ -187,65 +162,79 @@ class BottomNavStyle15 extends StatelessWidget {
     final midIndex = (this.navBarEssentials!.items!.length / 2).floor();
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(boxShadow: []),
-      height: this.navBarEssentials!.navBarHeight,
+      decoration: BoxDecoration(color: Colors.transparent),
+      height: this.navBarEssentials!.navBarHeight!+this.navBarEssentials!.navBarHeight!/2,
       child: Stack(
         children: <Widget>[
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Color(0x19000000),
-                  blurRadius: 15,
-                  offset: Offset(0, 4),
-                  spreadRadius: 0,
-                )
-              ],
+          Align(
+            alignment: Alignment.bottomCenter,
+
+            child: Container(
+              height: this.navBarEssentials!.navBarHeight,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0x19000000),
+                    blurRadius: 15,
+                    offset: Offset(0, 4),
+                    spreadRadius: 0,
+                  )
+                ],
+              ),
             ),
           ),
-          Container(
-            child: ClipRRect(
-              borderRadius:
-                  this.navBarDecoration!.borderRadius ?? BorderRadius.zero,
-              child: BackdropFilter(
-                filter: this
-                        .navBarEssentials!
-                        .items![this.navBarEssentials!.selectedIndex!]
-                        .filter ??
-                    ImageFilter.blur(sigmaX: 0.5, sigmaY: 0.5),
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: this.navBarEssentials!.items!.map((item) {
-                      int index = this.navBarEssentials!.items!.indexOf(item);
-                      return Flexible(
-                        child: GestureDetector(
-                          onTap: () {
-                            if (this
-                                    .navBarEssentials!
-                                    .items![index]
-                                    .onPressed !=
-                                null) {
-                              this.navBarEssentials!.items![index].onPressed!(
-                                  this
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: this.navBarEssentials!.navBarHeight,
+              child: ClipRRect(
+                borderRadius:
+                    this.navBarDecoration!.borderRadius ?? BorderRadius.zero,
+                child: BackdropFilter(
+                  filter: this
+                          .navBarEssentials!
+                          .items![this.navBarEssentials!.selectedIndex!]
+                          .filter ??
+                      ImageFilter.blur(sigmaX: 0.5, sigmaY: 0.5),
+                  child: Container(
+                    height: this.navBarEssentials!.navBarHeight,
+
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: this.navBarEssentials!.items!.map((item) {
+                        int index = this.navBarEssentials!.items!.indexOf(item);
+                        return Flexible(
+                          child: GestureDetector(
+                            onTap: () {
+                              if (this
                                       .navBarEssentials!
-                                      .selectedScreenBuildContext);
-                            } else {
-                              this.navBarEssentials!.onItemSelected!(index);
-                            }
-                          },
-                          child: index == midIndex
-                              ? Container(width: 150, color: Colors.transparent)
-                              : _buildItem(
-                                  context,
-                                  item,
-                                  this.navBarEssentials!.selectedIndex == index,
-                                  this.navBarEssentials!.navBarHeight),
-                        ),
-                      );
-                    }).toList(),
+                                      .items![index]
+                                      .onPressed !=
+                                  null) {
+                                this.navBarEssentials!.items![index].onPressed!(
+                                    this
+                                        .navBarEssentials!
+                                        .selectedScreenBuildContext);
+                              } else {
+                                this.navBarEssentials!.onItemSelected!(index);
+                              }
+                            },
+                            child:
+                            // index == midIndex
+                            //     ? Container(width: 150, color: Colors.transparent)
+                            //     :
+                            _buildItem(
+                                    context,
+                                    item,
+                                    this.navBarEssentials!.selectedIndex == index,
+                                    this.navBarEssentials!.navBarHeight,index == midIndex),
+                          ),
+                        );
+                      }).toList(),
+                    ),
                   ),
                 ),
               ),
@@ -253,24 +242,28 @@ class BottomNavStyle15 extends StatelessWidget {
           ),
           this.navBarEssentials!.navBarHeight == 0
               ? SizedBox.shrink()
-              : Center(
-                  child: GestureDetector(
-                      onTap: () {
-                        if (this.navBarEssentials!.items![midIndex].onPressed !=
-                            null) {
-                          this.navBarEssentials!.items![midIndex].onPressed!(
-                              this
-                                  .navBarEssentials!
-                                  .selectedScreenBuildContext);
-                        } else {
-                          this.navBarEssentials!.onItemSelected!(midIndex);
-                        }
-                      },
-                      child: _buildMiddleItem(
-                          this.navBarEssentials!.items![midIndex],
-                          this.navBarEssentials!.selectedIndex == midIndex,
-                          this.navBarEssentials!.navBarHeight)),
-                )
+              : Align(
+            alignment: Alignment.bottomCenter,
+
+                child: Center(
+                    child: GestureDetector(
+                        onTap: () {
+                          if (this.navBarEssentials!.items![midIndex].onPressed !=
+                              null) {
+                            this.navBarEssentials!.items![midIndex].onPressed!(
+                                this
+                                    .navBarEssentials!
+                                    .selectedScreenBuildContext);
+                          } else {
+                            this.navBarEssentials!.onItemSelected!(midIndex);
+                          }
+                        },
+                        child: _buildMiddleItem(
+                            this.navBarEssentials!.items![midIndex],
+                            this.navBarEssentials!.selectedIndex == midIndex,
+                            this.navBarEssentials!.navBarHeight)),
+                  ),
+              )
         ],
       ),
     );

@@ -7,6 +7,8 @@ class NavBarEssentials {
   final List<PersistentBottomNavBarItem>? items;
   final ValueChanged<int>? onItemSelected;
   final double? navBarHeight;
+  final double? maxNavBarHeight;
+
   final NavBarPadding? padding;
   final bool? popScreensOnTapOfSelectedTab;
   final bool? popAllScreensOnTapAnyTabs;
@@ -20,6 +22,7 @@ class NavBarEssentials {
     required this.items,
     this.onItemSelected,
     this.navBarHeight = 0.0,
+    this.maxNavBarHeight = 0.0,
     this.padding,
     this.popScreensOnTapOfSelectedTab,
     this.popAllScreensOnTapAnyTabs,
@@ -34,6 +37,7 @@ class NavBarEssentials {
     List<PersistentBottomNavBarItem>? items,
     ValueChanged<int>? onItemSelected,
     double? navBarHeight,
+    double? maxNavBarHeight,
     NavBarPadding? padding,
     bool? popScreensOnTapOfSelectedTab,
     ItemAnimationProperties? itemAnimationProperties,
@@ -45,6 +49,7 @@ class NavBarEssentials {
       items: items ?? this.items,
       onItemSelected: onItemSelected ?? this.onItemSelected,
       navBarHeight: navBarHeight ?? this.navBarHeight,
+      maxNavBarHeight: maxNavBarHeight ?? this.maxNavBarHeight,
       padding: padding ?? this.padding,
       popScreensOnTapOfSelectedTab:
           popScreensOnTapOfSelectedTab ?? this.popScreensOnTapOfSelectedTab,
