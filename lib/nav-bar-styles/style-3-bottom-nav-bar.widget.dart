@@ -470,7 +470,7 @@ class RPSCustomPainterBlur extends CustomPainter {
     path_0.close();
 
     Paint paint_0_fill = Paint()..style = PaintingStyle.fill;
-    paint_0_fill.color = Colors.black.withOpacity(0.25);
+    paint_0_fill.color = Colors.black.withOpacity(0.0);
     canvas.drawPath(
         path_0,
         paint_0_fill
