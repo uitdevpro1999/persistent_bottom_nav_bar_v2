@@ -7,7 +7,7 @@ class PersistentBottomNavBarItem {
 
   /// In-Active icon for the bar item.
   final Widget? inactiveIcon;
-
+  final Widget? customText;
   /// Title for the bar item. Might not appear is some `styles`.
   final String? title;
 
@@ -62,6 +62,7 @@ class PersistentBottomNavBarItem {
 
   PersistentBottomNavBarItem(
       {required this.icon,
+        this.customText,
       this.inactiveIcon,
       this.title,
       this.contentPadding = 5.0,
