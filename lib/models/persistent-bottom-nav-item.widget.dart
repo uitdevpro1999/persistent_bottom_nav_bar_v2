@@ -8,6 +8,7 @@ class PersistentBottomNavBarItem {
   /// In-Active icon for the bar item.
   final Widget? inactiveIcon;
   final Widget? customText;
+  final bool isCustomText;
   /// Title for the bar item. Might not appear is some `styles`.
   final String? title;
 
@@ -72,6 +73,7 @@ class PersistentBottomNavBarItem {
       this.inactiveColorSecondary = CupertinoColors.systemGrey,
       this.opacity = 1.0,
       this.filter,
+        this.isCustomText =false,
       this.iconFixColor,
       this.gradient,
       this.textStyle,

@@ -53,7 +53,7 @@ class BottomNavStyle15 extends StatelessWidget {
                               : item.inactiveIcon ?? item.icon,
                         ),
                       ),
-                     if(item.customText== null&&isMid==false)...[
+                     if(item.customText== null&&item.isCustomText==false)...[
                           item.title == null
                           ? SizedBox.shrink()
                           : Material(
@@ -78,10 +78,8 @@ class BottomNavStyle15 extends StatelessWidget {
                                         fontSize: 12.0),
                               )),
                             )],
-                        if(item.customText!= null&&isMid==true)...[
-                          item.title == null
-                              ? SizedBox.shrink()
-                              : Material(
+                        if(item.customText!= null&&item.isCustomText==true)...[
+                              Material(
                             type: MaterialType.transparency,
                             child: FittedBox(
                                 child: item.customText),
